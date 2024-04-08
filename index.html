@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Segmentation</title>
+</head>
+<body>
+    <h1>Image Segmentation</h1>
+    <form action="/segment" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" multiple>
+        <button type="submit">Segment Images</button>
+    </form>
+    {% if selected_imgs %}
+        <h2>Selected Images</h2>
+        {% for selected_img in selected_imgs %}
+            <img src="data:image/png;base64,{{ selected_img }}" alt="Selected Image">
+        {% endfor %}
+    {% endif %}
+    {% if segmented_imgs %}
+        <h2>Segmented Images</h2>
+        {% for segmented_img in segmented_imgs %}
+            <img src="data:image/png;base64,{{ segmented_img }}" alt="Segmented Image">
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
+
